@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Veterinario</title>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="./css/styles.css">
+    
+
+</head>
+<body>
+    <form id="veterinarioForm">
+        <label for="nombreServicio">Nombre Servicio:</label>
+        <input type="text" id="nombreServicio" name="nombreServicio" required>
+        
+        <label for="precioServicio">Precio Servicio:</label>
+        <input type="text" id="precioServicio" name="precioServicio" required>
+
+        <button type="button" id="crearServicio">Enviar</button>
+        <button type="button" class="volver" onclick="window.location.href='index.html'">Volver</button>
+    </form>
+    <div id="mensajeContainer"></div>
+        <!-- js -->
+        <script defer src="./js/servicio.js"></script>
+</body>
+</html>
+

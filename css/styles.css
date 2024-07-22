@@ -1,0 +1,195 @@
+/* crear Veterinario y servicio */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+#veterinarioForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.volver {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #6c757d;
+}
+.volver:hover {
+    background-color: #5a6268;
+}
+
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* Contenedor de Servicios */
+#service-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Tarjetas de Servicio */
+#service-container > div {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+}
+
+#service-container h3 {
+    margin: 0;
+    color: #007BFF;
+}
+
+#service-container p {
+    margin: 10px 0;
+    color: #555;
+}
+
+
+
+/* index */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+h1 {
+    color: #007BFF;
+}
+h2 {
+    color: #555;
+}
+nav {
+    margin: 20px 0;
+}
+nav a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+nav a:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* styles.css */
+
+/* Estilo general del body */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilo del contenedor de veterinarios */
+#veterinario-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Estilo de cada tarjeta de veterinario */
+#veterinario-container > div {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Ajusta según sea necesario */
+    text-align: center;
+}
+
+/* Estilo de los títulos dentro de las tarjetas */
+#veterinario-container h3 {
+    color: #007BFF;
+    margin: 0 0 10px;
+}
+
+/* Estilo de los párrafos dentro de las tarjetas */
+#veterinario-container p {
+    color: #555;
+    margin: 0;
+}
+
+/* Estilo del botón de volver */
+.volver {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.volver:hover {
+    background-color: #5a6268;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Veterinario</title>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="./css/styles.css">
+    
+    <!-- js -->
+    <script defer src="./js/veterinario.js"></script>
+</head>
+<body>
+    <form id="veterinarioForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+
+        <button type="button" id="crearVeterinario">Enviar</button>
+        <button type="button" class="volver" onclick="window.location.href='index.html'">Volver</button>
+    </form>
+    
+    <div id="mensajeContainer"></div>
+</body>
+</html>
