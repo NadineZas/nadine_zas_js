@@ -6,22 +6,10 @@ class Servicio {
     }
 }
 
-function obtenerContadorId() {
-    let contador = localStorage.getItem("contadorId");
-    if (contador === null) {
-        contador = 1; // Inicializa en 1 si es la primera vez
-    } else {
-        contador = parseInt(contador, 10);
-    }
-    return contador;
-}
-
 // Actualiza el contador del ID en localStorage
 function actualizarContadorId(nuevoValor) {
-    localStorage.setItem("contadorId", nuevoValor);
+    localStorage.setItem("contadorServicioId", nuevoValor);
 }
-
-
 
 function getServiciosFromLocalStorage() {
     let serviciosLocal = localStorage.getItem("servicios");
@@ -32,13 +20,12 @@ function getServiciosFromLocalStorage() {
     }
 }
 
-function guardarServiciosEnLocalStorage(servicios,idServicios) {
+function guardarServiciosEnLocalStorage(servicios) {
     localStorage.setItem("servicios", JSON.stringify(servicios));
-    localStorage.setItem("idservicios",idServicios++)
 }
 
 function obtenerContadorId() {
-    let contador = localStorage.getItem("contadorId");
+    let contador = localStorage.getItem("contadorServicioId");
     if (contador === null) {
         contador = 1; // Inicializa en 1 si es la primera vez
     } else {
@@ -46,12 +33,11 @@ function obtenerContadorId() {
     }
     return contador;
 }
+
 function servicioExistente(nombre){
     const servicios = getServiciosFromLocalStorage();
-     return servicios.some(servicio => servicio.nombre === nombre);
+    return servicios.some(servicio => servicio.nombre.toLowerCase() === nombre.toLowerCase());
 }
-
-
 
 function agregarServicio(nombre, precio) {
     return new Promise((resolve, reject) => {
@@ -59,10 +45,10 @@ function agregarServicio(nombre, precio) {
         const servicios = getServiciosFromLocalStorage();
 
         // Verificar si ya existe un servicio con el nombre proporcionado
-        const servicioExistente = servicios.some(servicio => servicio.nombre === nombre);
+        const existeServicio = servicioExistente(nombre);
 
-        if (servicioExistente) {
-            return reject(`Ya existe un servicio con el nombre "${nombre}".`);
+        if (existeServicio) {
+            return reject(`Ya existe un servicio con el nombre.`);
         }
 
         // Si el servicio no existe, proceder a agregarlo
@@ -90,12 +76,17 @@ function actualizarServicio(id, nombre, precio) {
     let servicioIndex = servicios.findIndex(servicio => servicio.id == id);
 
     if (servicioIndex !== -1) {
-        servicios[servicioIndex].nombre = nombre;
-        servicios[servicioIndex].precio = precio;
+        if (nombre) {
+            servicios[servicioIndex].nombre = nombre;
+        }
+        if (precio) {
+            servicios[servicioIndex].precio = precio;
+        }
         guardarServiciosEnLocalStorage(servicios);
         mostrarServicios();
     }
 }
+
 function eliminarServicio(id) {
     Swal.fire({
         title: "Quiere eliminar el Servicio?",
@@ -150,12 +141,6 @@ document.getElementById('crearServicio').addEventListener('click', async functio
     const nombreServicio = document.getElementById('nombreServicio').value;
     const precioServicio = document.getElementById('precioServicio').value;
 
-    const mensajeContainer = document.getElementById('mensajeContainer');
-    mensajeContainer.innerHTML = '';
-
-    const mensaje = document.createElement("h3");
-    mensaje.className = 'mensaje';
-    
     if (nombreServicio && precioServicio) {
         try {
             const resultado = await agregarServicio(nombreServicio, precioServicio);
@@ -183,10 +168,7 @@ document.getElementById('crearServicio').addEventListener('click', async functio
             text: "Llene ambos campos",
             icon: "error"
           });
-
     }
-
-    mensajeContainer.appendChild(mensaje);
 });
 
 document.getElementById('actualizarServicio').addEventListener('click', function () {
@@ -194,53 +176,60 @@ document.getElementById('actualizarServicio').addEventListener('click', function
     const precioServicio = document.getElementById('precioServicio').value;
     const servicioId = document.getElementById('servicioId').value;
 
-    const mensajeContainer = document.getElementById('mensajeContainer');
-    mensajeContainer.innerHTML = '';
-
-    const mensaje = document.createElement("h3");
-    mensaje.className = 'mensaje';
-
-    if (nombreServicio && precioServicio && servicioId) {
-
+    if ((nombreServicio || precioServicio) && servicioId) {
         Swal.fire({
-            title: "Quiere actualizar el Servicio?",
+            title: "¿Quiere actualizar el Servicio?",
             showDenyButton: true,
             confirmButtonText: "Continuar",
-            denyButtonText: `Cancelar`
-          }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
+            denyButtonText: "Cancelar"
+        }).then((result) => {
             if (result.isConfirmed) {
-                if(servicioExistente(nombreServicio)){
-                    Swal.fire({
-                        title: "ERROR",
-                        text: "Ya existe un Servicio con ese nombre",
-                        icon: "error"
-                      });  
-                }else{
-                actualizarServicio(servicioId, nombreServicio, precioServicio);
-                mensaje.innerHTML = `Se actualizó el Servicio ${nombreServicio} correctamente`;
-                document.getElementById('nombreServicio').value = '';
-                document.getElementById('precioServicio').value = '';
-                document.getElementById('servicioId').value = '';
-                document.getElementById('crearServicio').style.display = 'inline';
-                document.getElementById('actualizarServicio').style.display = 'none';
-                Swal.fire("Actualizado!", "se actualizo el servicio correctamente", "success");
+                // Solo verificar si el nombre está siendo actualizado
+                if (nombreServicio) {
+                    // Verificar si el nombre ya existe en otro servicio
+                    const servicios = getServiciosFromLocalStorage();
+                    const existeNombre = servicios.some(servicio => 
+                        servicio.nombre.toLowerCase() === nombreServicio.toLowerCase() && servicio.id != servicioId
+                    );
+
+                    if (existeNombre) {
+                        Swal.fire({
+                            title: "ERROR",
+                            text: "Ya existe un Servicio con ese nombre",
+                            icon: "error"
+                        });
+                    } else {
+                        // Si el nombre es único o no se está actualizando el nombre
+                        actualizarServicio(servicioId, nombreServicio, precioServicio || undefined);
+                        document.getElementById('nombreServicio').value = '';
+                        document.getElementById('precioServicio').value = '';
+                        document.getElementById('servicioId').value = '';
+                        document.getElementById('crearServicio').style.display = 'inline';
+                        document.getElementById('actualizarServicio').style.display = 'none';
+                        Swal.fire("Actualizado!", "El servicio se actualizó correctamente", "success");
+                    }
+                } else {
+                    // Si el nombre no está siendo actualizado, solo actualiza el precio
+                    actualizarServicio(servicioId, undefined, precioServicio || undefined);
+                    document.getElementById('nombreServicio').value = '';
+                    document.getElementById('precioServicio').value = '';
+                    document.getElementById('servicioId').value = '';
+                    document.getElementById('crearServicio').style.display = 'inline';
+                    document.getElementById('actualizarServicio').style.display = 'none';
+                    Swal.fire("Actualizado!", "El servicio se actualizó correctamente", "success");
                 }
             } else if (result.isDenied) {
-              Swal.fire("Cancelo la actualizacion");
+                Swal.fire("Cancelado", "No se actualizó el servicio", "info");
             }
-          });
+        });
     } else {
         Swal.fire({
             title: "ERROR",
-            text: "Llene ambos campos",
+            text: "Llene al menos un campo (nombre o precio)",
             icon: "error"
-          });
+        });
     }
-
-    mensajeContainer.appendChild(mensaje);
 });
-
 
 function inicializarFormulario() {
     mostrarServicios();

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Veterinario</title>
+    <title>Servicios</title>
     
     <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css">
@@ -14,10 +14,10 @@
 <body>
     <form id="servicioForm">
         <label for="nombreServicio">Nombre Servicio:</label>
-        <input type="text" id="nombreServicio" name="nombreServicio" required>
+        <input type="text" id="nombreServicio" name="nombreServicio">
         
         <label for="precioServicio">Precio Servicio:</label>
-        <input type="text" id="precioServicio" name="precioServicio" required>
+        <input type="number" id="precioServicio" name="precioServicio">
 
         <input type="hidden" id="servicioId" name="servicioId">
 
@@ -25,13 +25,9 @@
         <button type="button" id="actualizarServicio">Actualizar</button>
         <button type="button" class="volver" onclick="window.location.href='index.html'">Volver</button>
     </form>
-
-    <div id="mensajeContainer"></div>
-    
     <h3>Lista de Servicios</h3>
     <ul id="listaServicios"></ul>
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
-
