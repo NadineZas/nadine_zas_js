@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Veterinario</title>
+    <title>CRUD Veterinario</title>
     
-    <!--CSS-->
+    <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css">
     
-
+    <!-- js -->
+    <script defer src="./js/servicio.js"></script>
 </head>
 <body>
-    <form id="veterinarioForm">
+    <form id="servicioForm">
         <label for="nombreServicio">Nombre Servicio:</label>
         <input type="text" id="nombreServicio" name="nombreServicio" required>
         
         <label for="precioServicio">Precio Servicio:</label>
         <input type="text" id="precioServicio" name="precioServicio" required>
 
-        <button type="button" id="crearServicio">Enviar</button>
+        <input type="hidden" id="servicioId" name="servicioId">
+
+        <button type="button" id="crearServicio">Agregar</button>
+        <button type="button" id="actualizarServicio">Actualizar</button>
         <button type="button" class="volver" onclick="window.location.href='index.html'">Volver</button>
     </form>
+
     <div id="mensajeContainer"></div>
-        <!-- js -->
-        <script defer src="./js/servicio.js"></script>
+    
+    <h3>Lista de Servicios</h3>
+    <ul id="listaServicios"></ul>
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
 

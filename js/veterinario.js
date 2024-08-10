@@ -1,8 +1,8 @@
-
 class Veterinario {
-    constructor(nombre, apellido) {
+    constructor(nombre, apellido,servicio) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.servicio=servicio
     }
 }
 

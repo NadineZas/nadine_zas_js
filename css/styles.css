@@ -1,195 +1,195 @@
-/* crear Veterinario y servicio */
-
+/* General */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5;
+    color: #333;
 }
-#veterinarioForm {
-    background-color: #fff;
-    padding: 20px;
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+h1 {
+    color: #007BFF;
+    font-size: 2rem;
+}
+
+h2 {
+    color: #555;
+    font-size: 1.5rem;
+}
+
+h3 {
+    color: #007BFF;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+/* Formulario de Servicio */
+#servicioForm {
+    background-color: #ffffff;
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
 }
+
 label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #555;
 }
+
 input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
+    width: calc(100% - 16px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
+    padding: 12px;
     border: none;
     border-radius: 4px;
+    color: white;
+    font-size: 1rem;
     cursor: pointer;
     margin-bottom: 10px;
-}
-button:hover {
-    background-color: #0056b3;
-}
-.volver {
-    width: auto;
-    padding: 10px 20px;
-    background-color: #6c757d;
-}
-.volver:hover {
-    background-color: #5a6268;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-/* General */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+button:hover {
+    transform: translateY(-2px);
+}
+
+#crearServicio {
+    background-color: #28a745;
+}
+
+#crearServicio:hover {
+    background-color: #218838;
+}
+
+#actualizarServicio {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+#actualizarServicio:hover {
+    background-color: #e0a800;
+}
+
+.volver {
+    background-color: #6c757d;
+}
+
+.volver:hover {
+    background-color: #5a6268;
 }
 
 /* Contenedor de Servicios */
-#service-container {
+#listaServicios {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     margin-top: 20px;
+    padding: 0;
+    list-style: none;
 }
 
 /* Tarjetas de Servicio */
-#service-container > div {
-    background-color: #fff;
+#listaServicios li {
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: calc(25% - 20px); /* Ajusta el tamaño para que haya 4 elementos por fila */
+    box-sizing: border-box;
+    min-width: 220px; /* Mínimo ancho de cada tarjeta */
 }
 
-#service-container h3 {
-    margin: 0;
-    color: #007BFF;
+.servicio-info {
+    font-size: 1rem;
+    color: #333;
 }
 
-#service-container p {
-    margin: 10px 0;
-    color: #555;
-}
-
-
-
-/* index */
-body {
-    font-family: Arial, sans-serif;
+.servicio-actions {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 10px;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+    margin-top: 10px;
 }
-h1 {
-    color: #007BFF;
-}
-h2 {
-    color: #555;
-}
-nav {
-    margin: 20px 0;
-}
-nav a {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
+
+.servicio-actions button {
     background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-nav a:hover {
-    background-color: #0056b3;
-}
-
-
-
-
-/* styles.css */
-
-/* Estilo general del body */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
-}
-
-/* Estilo del contenedor de veterinarios */
-#veterinario-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    max-width: 800px;
-    width: 100%;
-}
-
-/* Estilo de cada tarjeta de veterinario */
-#veterinario-container > div {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 200px; /* Ajusta según sea necesario */
-    text-align: center;
-}
-
-/* Estilo de los títulos dentro de las tarjetas */
-#veterinario-container h3 {
-    color: #007BFF;
-    margin: 0 0 10px;
-}
-
-/* Estilo de los párrafos dentro de las tarjetas */
-#veterinario-container p {
-    color: #555;
-    margin: 0;
-}
-
-/* Estilo del botón de volver */
-.volver {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #6c757d;
     color: white;
     border: none;
     border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
     cursor: pointer;
-    text-decoration: none;
-    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.volver:hover {
-    background-color: #5a6268;
+.servicio-actions button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.servicio-actions button.editar {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.servicio-actions button.editar:hover {
+    background-color: #e0a800;
+}
+
+.servicio-actions button.eliminar {
+    background-color: #dc3545;
+}
+
+.servicio-actions button.eliminar:hover {
+    background-color: #c82333;
+}
+/* Estilos para los enlaces como botones */
+nav a {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0 10px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Opcional: Estilo para la barra de navegación */
+nav {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }

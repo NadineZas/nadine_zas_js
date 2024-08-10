@@ -1,0 +1,113 @@
+[
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "edad": 28,
+      "direccion": {
+        "calle": "18 de Julio",
+        "esquina": "Ejido",
+        "numero_apartamento": "102"
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "María",
+      "apellido": "Rodríguez",
+      "edad": 34,
+      "direccion": {
+        "calle": "Bulevar Artigas",
+        "esquina": "Goes",
+        "numero_apartamento": "301"
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Carlos",
+      "apellido": "González",
+      "edad": 45,
+      "direccion": {
+        "calle": "Colonia",
+        "esquina": "Yaguarón",
+        "numero_apartamento": "504"
+      }
+    },
+    {
+      "id": 4,
+      "nombre": "Ana",
+      "apellido": "Fernández",
+      "edad": 22,
+      "direccion": {
+        "calle": "Av. Italia",
+        "esquina": "Brito del Pino",
+        "numero_apartamento": "1202"
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "Diego",
+      "apellido": "Martínez",
+      "edad": 38,
+      "direccion": {
+        "calle": "José Batlle y Ordóñez",
+        "esquina": "Gral. Flores",
+        "numero_apartamento": "204"
+      }
+    },
+    {
+      "id": 6,
+      "nombre": "Laura",
+      "apellido": "Suárez",
+      "edad": 26,
+      "direccion": {
+        "calle": "8 de Octubre",
+        "esquina": "Luis Alberto de Herrera",
+        "numero_apartamento": "801"
+      }
+    },
+    {
+      "id": 7,
+      "nombre": "Pablo",
+      "apellido": "Lopez",
+      "edad": 52,
+      "direccion": {
+        "calle": "Gral. Rivera",
+        "esquina": "Obligado",
+        "numero_apartamento": "1103"
+      }
+    },
+    {
+      "id": 8,
+      "nombre": "Lucía",
+      "apellido": "Méndez",
+      "edad": 29,
+      "direccion": {
+        "calle": "Av. Brasil",
+        "esquina": "Francisco Solano López",
+        "numero_apartamento": "503"
+      }
+    },
+    {
+      "id": 9,
+      "nombre": "Santiago",
+      "apellido": "Silva",
+      "edad": 36,
+      "direccion": {
+        "calle": "Gral. Flores",
+        "esquina": "Propios",
+        "numero_apartamento": "302"
+      }
+    },
+    {
+      "id": 10,
+      "nombre": "Valeria",
+      "apellido": "Ramírez",
+      "edad": 48,
+      "direccion": {
+        "calle": "Luis Alberto de Herrera",
+        "esquina": "Monte Caseros",
+        "numero_apartamento": "902"
+      }
+    }
+  ]
+  
