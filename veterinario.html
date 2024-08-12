@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Veterinario</title>
-    
-    <!--CSS-->
-    <link rel="stylesheet" href="./css/styles.css">
-    
+    <title>Veterinarios</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/veterinario.css">
+
     <!-- js -->
     <script defer src="./js/veterinario.js"></script>
 </head>
 <body>
-    <form id="veterinarioForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required>
-
-        <button type="button" id="crearVeterinario">Enviar</button>
-        <button type="button" class="volver" onclick="window.location.href='index.html'">Volver</button>
-    </form>
+    <h1>Lista de Veterinarios</h1>
+    <button onclick="window.location.href='crearVeterinario.html'">Agregar Veterinario</button>
     
-    <div id="mensajeContainer"></div>
+    <!-- Tabla para la lista de veterinarios -->
+    <table id="listaVeterinarios">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Servicio</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <button class="volver" onclick="window.location.href='index.html'">Volver</button>
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
