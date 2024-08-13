@@ -41,10 +41,7 @@ function servicioExistente(nombre){
 
 function agregarServicio(nombre, precio) {
     return new Promise((resolve, reject) => {
-        // Obtener los servicios actuales del almacenamiento local
         const servicios = getServiciosFromLocalStorage();
-
-        // Verificar si ya existe un servicio con el nombre proporcionado
         const existeServicio = servicioExistente(nombre);
 
         if (existeServicio) {
@@ -140,7 +137,14 @@ function editarServicio(id) {
 document.getElementById('crearServicio').addEventListener('click', async function() {
     const nombreServicio = document.getElementById('nombreServicio').value;
     const precioServicio = document.getElementById('precioServicio').value;
-
+    if(precioServicio<0){
+        Swal.fire({
+            title: "ERROR",
+            text: "El precio no puede ser negativo",
+            icon: "error"
+        });
+        return
+    }
     if (nombreServicio && precioServicio) {
         try {
             const resultado = await agregarServicio(nombreServicio, precioServicio);
@@ -175,6 +179,15 @@ document.getElementById('actualizarServicio').addEventListener('click', function
     const nombreServicio = document.getElementById('nombreServicio').value;
     const precioServicio = document.getElementById('precioServicio').value;
     const servicioId = document.getElementById('servicioId').value;
+
+    if(precioServicio<0){
+        Swal.fire({
+            title: "ERROR",
+            text: "El precio no puede ser negativo",
+            icon: "error"
+        });
+        return
+    }
 
     if ((nombreServicio || precioServicio) && servicioId) {
         Swal.fire({

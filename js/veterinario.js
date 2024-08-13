@@ -8,7 +8,7 @@ class Veterinario {
     }
 }
 
-// Actualiza el contador del ID en localStorage
+
 function actualizarContadorId(nuevoValor) {
     localStorage.setItem("contadorVetId", nuevoValor);
 }
@@ -16,7 +16,7 @@ function actualizarContadorId(nuevoValor) {
 function obtenerContadorId() {
     let contador = localStorage.getItem("contadorVetId");
     if (contador === null) {
-        contador = 1; // Inicializa en 1 si es la primera vez
+        contador = 1;
     } else {
         contador = parseInt(contador, 10);
     }
@@ -74,8 +74,6 @@ function agregarVeterinario(nombre, apellido,edad, servicioId) {
     const nuevoVeterinario = new Veterinario(nuevoId, nombre, apellido,edad, servicioSeleccionado);
     veterinarios.push(nuevoVeterinario);
     guardarVeterinariosEnLocalStorage(veterinarios);
-
-    // Actualiza el contador de IDs
     actualizarContadorId(nuevoId + 1);
 }
 
@@ -181,7 +179,14 @@ if (document.getElementById("formVeterinarioEdit")) {
 
                 const servicios = getServiciosFromLocalStorage();
                 const servicioSeleccionado = servicios.find(servicio => servicio.id == servicioId);
-                
+                if(edad<18){
+                    Swal.fire({
+                        title: "ERROR",
+                        text: "La edad no puede ser menor a 18", 
+                        icon: "error"
+                    })
+                    return
+                }
                 if (!servicioSeleccionado) {
                     Swal.fire({
                         title: "ERROR",
@@ -202,7 +207,7 @@ if (document.getElementById("formVeterinarioEdit")) {
                         text: "Se actualizó correctamente el Veterinario",
                         icon: "success"
                     }).then(() => {
-                        window.location.href = "veterinario.html"; // Redireccionar después de guardar
+                        window.location.href = "veterinario.html";
                     });
                 }
             } else if (result.isDenied) {
@@ -222,7 +227,15 @@ if (document.getElementById("formVeterinario")) {
         const edad = document.getElementById("edad").value;
         const servicio = document.getElementById("servicio").value;
         try{
-            if(nombre && apellido && servicio){
+            if(nombre && apellido && edad && servicio){
+                if(edad<18){
+                    Swal.fire({
+                        title: "ERROR",
+                        text: "La edad no puede ser menor a 18", 
+                        icon: "error"
+                    })
+                    return
+                }
                 agregarVeterinario(nombre, apellido,edad, servicio);
                 document.getElementById('nombre').value = '';
                 document.getElementById('apellido').value = '';
@@ -232,7 +245,7 @@ if (document.getElementById("formVeterinario")) {
                     icon: "success"
                 })
             }else{
-                throw new Error("Llene ambos campos")
+                throw new Error("Llene todos los campos")
             }
         }catch(error){
             Swal.fire({

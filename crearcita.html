@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- CSS -->
+       <link rel="stylesheet" href="./css/cita.css">
+       <!-- js -->
+       <script defer src="./js/cita.js"></script>
+</head>
+<body>
+    <h1>Crear Cita</h1>
+    <form id="citaForm">
+        <div class="form-group">
+            <label for="nombreUsuario">Nombre:</label>
+            <input type="text" id="nombreUsuario" name="nombreUsuario" required>
+        </div>
+        <div class="form-group">
+            <label for="apellidoUsuario">Apellido:</label>
+            <input type="text" id="apellidoUsuario" name="apellidoUsuario" required>
+        </div>
+        <div class="form-group">
+            <label for="contactoUsuario">Contacto Telefonico:</label>
+            <input type="text" id="contactoUsuario" name="contactoUsuario" required>
+        </div>
+        <div class="form-group">
+            <label for="fechaCita">Fecha de la cita:</label>
+            <input type="date" id="fechaCita" name="fechaCita" required>
+        </div>
+        <div class="form-group">
+            <label for="servicio">Servicio:</label>
+            <select id="servicio" name="servicio" required>
+                <option value="">Seleccione un servicio</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="veterinario">Veterinario:</label>
+            <select id="veterinario" name="veterinario" required>
+                <option value="">Seleccione un veterinario</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button type="button" id="volverBtn" onclick="window.location.href='index.html'">Volver</button>
+            <button type="submit">Crear Cita</button>
+        </div>
+    </form>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</body>
+</html>

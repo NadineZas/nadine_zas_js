@@ -18,15 +18,12 @@ class Veterinario {
 
 
 function cargar(){
-    // Definición de servicios
 const servicios = [
     new Servicio(1, "Consulta General", 50),
     new Servicio(2, "Vacunación", 30),
     new Servicio(3, "Cirugía", 200),
     new Servicio(4, "Peluquería", 40)
 ];
-
-// Definición de veterinarios
 const veterinarios = [
     new Veterinario(1, "Carlos", "Pérez",30, servicios[0]), // Consulta General
     new Veterinario(2, "Laura", "García",40, servicios[1]), // Vacunación
@@ -40,15 +37,9 @@ const veterinarios = [
     new Veterinario(10, "José", "Ramírez",32, servicios[1]) // Vacunación
 ];
 
-// Actualiza el contador del ID en localStorage
-function actualizarContadorId(nuevoValor) {
-    localStorage.setItem("contadorServicioId", nuevoValor);
-}
-
 function guardarServiciosEnLocalStorage(servicios) {
     localStorage.setItem("servicios", JSON.stringify(servicios));
 }
-
 
 function actualizarContadorServicioId(nuevoValor) {
     localStorage.setItem("contadorServicioId", nuevoValor);
@@ -62,19 +53,27 @@ function guardarVeterinariosEnLocalStorage(veterinarios) {
     localStorage.setItem("veterinarios", JSON.stringify(veterinarios));
 }
 
-
-
-// Guardar servicios en localStorage
 guardarServiciosEnLocalStorage(servicios);
 actualizarContadorServicioId(servicios.length + 1);
 
-
-// Guardar veterinarios en localStorage
 guardarVeterinariosEnLocalStorage(veterinarios);
 actualizarContadorVeterinarioId(veterinarios.length + 1);
 
 }
 
+// Función para borrar los datos de localStorage
+function borrarDatos() {
+    localStorage.removeItem("servicios");
+    localStorage.removeItem("veterinarios");
+    localStorage.removeItem("contadorServicioId");
+    localStorage.removeItem("contadorVetId");
+
+    Swal.fire({
+        title: "Datos Borrados",
+        text: "Se han eliminado los datos de servicios y veterinarios.",
+        icon: "success"
+    });
+}
 
 
 document.getElementById('cargar').addEventListener('click',function() {
@@ -84,4 +83,20 @@ document.getElementById('cargar').addEventListener('click',function() {
         text: "Se cargaron los datos", 
         icon: "success"
     })
+});
+
+
+document.getElementById('borrarDatos').addEventListener('click', function() {
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esto eliminará todos los datos de servicios y veterinarios.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, borrar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            borrarDatos();
+        }
+    });
 });
